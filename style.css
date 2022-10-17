@@ -8,11 +8,6 @@
 @media only screen and (max-width: 768px) {
     * {
         font-size: 25px;
-        overflow: hidden !important;
-    }
-    body {
-        overflow: hidden !important;
-        
     }
     #calculator {
         width: 100vw !important;
@@ -35,15 +30,14 @@
     }
     #panel-bc { 
         height: 50vh !important;
-        overflow: hidden !important;
     }
     #panel { 
         width: 100vw !important;
-        margin-left: 1vw !important;
         display: block !important;
         text-align: center;
-        margin-bottom: 4vh !important;
-        overflow: hidden !important;
+        margin-bottom: 0vh !important;
+        padding-bottom: 4vh !important;
+        margin: 0 !important;
     }
     button { 
         font-size: 1rem !important;
@@ -51,8 +45,11 @@
         height: 16vw !important;
         margin: 0 !important;
     }
+    .x {
+        display: none !important;
+    }
 }
-
+html, body {margin: 0; height: 100%; overflow: hidden}
 body {
     background-color: #22252d;
     width: 100vw;
