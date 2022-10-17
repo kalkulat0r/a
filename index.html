@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Kalkulator</title>
+</head>
+<body>
+    <div id="calculator">
+        <div id="screen"></div>
+        <div id="result"></div>
+        <img draggable="false" id="cat" class="cat" src="cat1.png" alt="">
+    </div>
+    <div id="panel-bc"></div>
+    <div id="panel">
+        <button class="other" onclick="add_to_screen('<span>sin(</span>')">sin</button>
+        <button class="other" onclick="add_to_screen('<span>cos(</span>')">cos</button>
+        <button class="other" onclick="add_to_screen('<span>tan(</span>')">tan</button>
+        <button class="other" onclick="add_to_screen('<span>%</span>')">%</button>
+        <button onclick="add_to_screen('7')">7</button>
+        <button onclick="add_to_screen('8')">8</button>
+        <button onclick="add_to_screen('9')">9</button>
+        <button class="op" onclick="add_to_screen('<span>(</span>')">(</button>
+        <button class="op" onclick="add_to_screen('<span>)</span>')">)</button>
+        <button class="strong_buttons"  onclick="backspace()">B</button>
+
+        <button onclick="add_to_screen('<span>√(</span>')">sqrt</button>
+        <button onclick="add_to_screen('<span>^2</span>')">x^2</button>
+        <button onclick="add_to_screen('<span>^</span>')">^x</button>
+        <button onclick="add_to_screen('<span>log(</span>')">log</button>
+        <button onclick="add_to_screen('4')">4</button>
+        <button onclick="add_to_screen('5')">5</button>
+        <button onclick="add_to_screen('6')">6</button>
+        <button class="op" onclick="add_to_screen('<span>+</span>')">+</button>
+        <button class="op" onclick="add_to_screen('<span>*</span>')">*</button>
+        <button class="strong_buttons" onclick="clear_screen()">C</button>
+
+        <button onclick="add_to_screen('0')">0</button>
+        <button onclick="add_to_screen('1')">1</button>
+        <button onclick="add_to_screen('2')">2</button>
+        <button onclick="add_to_screen('3')">3</button>
+        <button class="op" onclick="add_to_screen('<span>-</span>')">-</button>
+        <button class="op" onclick="add_to_screen('<span>/</span>')">/</button>
+        <button class="inv"></button>
+    </div>
+    
+
+    <script>
+        let calculator = document.getElementById("screen")
+        
+        function add_to_screen(a) {
+            if ("0123456789".includes(a)) {
+                let cat = document.getElementById("cat")
+                    cat.src = "cat2.png"
+                    setTimeout(function() {
+                        let cat = document.getElementById("cat")
+                        cat.src = "cat1.png"
+                    }, 100);
+            } else if (a.includes("%") || a.includes("+") || a.includes("-") || a.includes("*") || a.includes("/") || a.includes("(") || a.includes(")")) { 
+                let cat = document.getElementById("cat")
+                    cat.src = "cat3.png"
+                    setTimeout(function() {
+                        let cat = document.getElementById("cat")
+                        cat.src = "cat1.png"
+                    }, 100);
+            }
+            calculator.innerHTML += a
+            calc()
+        }
+        function backspace() {
+            let calculator = document.getElementById("screen")
+            switch (calculator.innerHTML.slice(-9)) {
+            
+                case "n(</span>":
+                case "s(</span>":
+                case "g(</span>":
+                    calculator.innerHTML = calculator.innerHTML.slice(0, -17) 
+                    break
+                case "√(</span>":
+                    calculator.innerHTML = calculator.innerHTML.slice(0, -15) 
+                    break
+                case ">+</span>":
+                case ">-</span>":
+                case ">*</span>":
+                case ">/</span>":
+                case ">(</span>":
+                case ">)</span>":
+                case ">%</span>":
+                    calculator.innerHTML = calculator.innerHTML.slice(0, -14) 
+                    break
+            
+                default:
+                    calculator.innerHTML = calculator.innerHTML.slice(0, -1) 
+            }
+            calc()
+        }
+        function clear_screen() {
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("screen").innerHTML = "";
+        }
+        function roundToFour(num) {
+            return +(Math.round(num + "e+4")  + "e-4");
+        }
+
+        function sin(a) {
+            return roundToFour(Math.sin(a * (Math.PI / 180)))
+        }
+        function cos(a) {
+            return roundToFour(Math.cos(a * (Math.PI / 180)))
+        }
+        function tan(a) {
+            return roundToFour(Math.tan(a * (Math.PI / 180)))
+        }
+        function log(a) {
+            return Math.log10(a)
+        }
+        function calc() {
+            try {
+                document.getElementById("result").classList.remove("error")
+                let calculator = document.getElementById("screen")
+                let formula = calculator.innerHTML.replaceAll("\n", "").replaceAll(" ", "").replaceAll("^", "**").replaceAll("√(", "Math.sqrt(").replaceAll("<span>", "").replaceAll("</span>", "")
+                if (formula.length == 0) {
+                    document.getElementById("result").innerHTML = ""
+                } else {
+                    document.getElementById("result").innerHTML = eval(formula)
+                }
+            }
+            catch (error) {
+                document.getElementById("result").classList.add("error")
+            } 
+            finally {
+            }
+        }
+        
+        document.addEventListener('keydown', (event)=> {    
+            switch (event.key) {
+                case "0":
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                    let cat = document.getElementById("cat")
+                    cat.src = "cat2.png"
+                    setTimeout(function() {
+                        let cat = document.getElementById("cat")
+                        cat.src = "cat1.png"
+                    }, 100);
+
+                    add_to_screen(event.key)
+                    calc()
+                    break
+                case "*":
+                case "/":
+                case "+":
+                case "-":
+                case "%":
+                case "(":
+                case ")":
+                    let cat2 = document.getElementById("cat")
+                    cat2.src = "cat3.png"
+                    setTimeout(function() {
+                        let cat2 = document.getElementById("cat")
+                        cat2.src = "cat1.png"
+                    }, 100);
+                    add_to_screen("<span>"+event.key+"</span>")
+                    calc()
+                    break
+                case "Backspace":
+                    backspace()
+                    calc()
+                    break
+            }         
+        });
+
+        window.addEventListener('keydown', function(e) {
+        if(e.keyCode == 32) {
+            e.preventDefault();
+        }
+        });
+    </script>
+   
+</body>
+</html>

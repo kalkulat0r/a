@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+
+* {
+    font-family: 'Prompt', sans-serif;
+}
+body {
+    background-color: #22252d;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Prompt', sans-serif;
+}
+
+#calculator {
+    width: 60vw;
+    color: white;
+    margin-left: 20vw;
+    height: 60vh;display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-content: flex-end;
+    margin-bottom: 1vh;
+    letter-spacing: .15rem;
+}
+.error {
+    color: #a67175 !important;
+    opacity: 0.6;
+}
+#screen {
+    font-size: 2.5rem;
+    opacity: 0.85;
+}
+.cat {
+    height: 40vh;
+    filter: drop-shadow(0 0 0.3rem gray);
+    margin-bottom: -7vh;
+    z-index: 9999;
+    pointer-events: none;
+}
+#result {
+    line-height: 4.8rem;
+    font-size: 5rem;
+    margin-bottom: .5rem;
+}
+.other {
+    color: #5ac8ba;
+}
+button {
+    background-color: #282b33;
+    border-style: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 2rem;
+    width: 5vw;
+    margin: .5vw;
+    height: 5vw;
+    transition:
+    all .2s ease;
+}
+button:hover {
+    background-color: #31343c;
+    
+}
+button:active {
+  transform: scale(0.87);
+}
+
+button:focus {outline:0;}
+#panel {
+    user-select: none;
+    position: absolute;
+    bottom: 0;
+    width: 60vw;
+    margin-left: 20vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    background-color: #2a2d37;
+}
+#panel-bc {
+    position: absolute;
+    bottom: 0;
+    background-color: #2a2d37;
+    width: 100vw;
+    height: 40vh;
+    z-index: -1;
+}
+span {
+    color: #a67175;
+    padding: .3rem;
+}
+
+.strong_buttons {
+    background-color: #a67175;
+    color: white;
+}
+.op {
+    color: #a67175;
+}
+.strong_buttons:hover {
+    background-color: #905156 !important;
+}
+.inv {
+    opacity: 0;
+}
