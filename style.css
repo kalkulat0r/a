@@ -3,6 +3,56 @@
 * {
     font-family: 'Prompt', sans-serif;
 }
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    * {
+        font-size: 25px;
+        overflow: hidden !important;
+    }
+    body {
+        overflow: hidden !important;
+        
+    }
+    #calculator {
+        width: 100vw !important;
+        margin-left: 0 !important; 
+        height: 50% !important;
+        
+    }
+    #result {
+        font-size: 45px !important;
+        line-height: 50px !important;
+    }
+    #screen {
+        
+        font-size: 25px !important;
+    }
+    .cat {
+        width: 100%  !important;
+        height: auto !important;
+        margin-bottom: -3vh !important;
+    }
+    #panel-bc { 
+        height: 50vh !important;
+        overflow: hidden !important;
+    }
+    #panel { 
+        width: 100vw !important;
+        margin-left: 1vw !important;
+        display: block !important;
+        text-align: center;
+        margin-bottom: 4vh !important;
+        overflow: hidden !important;
+    }
+    button { 
+        font-size: 1rem !important;
+        width: 16vw !important;
+        height: 16vw !important;
+        margin: 0 !important;
+    }
+}
+
 body {
     background-color: #22252d;
     width: 100vw;
