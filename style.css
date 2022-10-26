@@ -3,51 +3,20 @@
 * {
     font-family: 'Prompt', sans-serif;
 }
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (max-width: 768px) {
-    * {
-        font-size: 25px;
-    }
-    #calculator {
-        width: 100vw !important;
-        margin-left: 0 !important; 
-        height: 50% !important;
-        
-    }
-    #result {
-        font-size: 45px !important;
-        line-height: 50px !important;
-    }
-    #screen {
-        
-        font-size: 25px !important;
-    }
-    .cat {
-        width: 100%  !important;
-        height: auto !important;
-        margin-bottom: -3vh !important;
-    }
-    #panel-bc { 
-        height: 50vh !important;
-    }
-    #panel { 
-        width: 100vw !important;
-        display: block !important;
-        text-align: center;
-        margin-bottom: 0vh !important;
-        padding-bottom: 4vh !important;
-        margin: 0 !important;
-    }
-    button { 
-        font-size: 1rem !important;
-        width: 16vw !important;
-        height: 16vw !important;
-        margin: 0 !important;
-    }
-    .x {
-        display: none !important;
-    }
+#panel_mobile {
+    display: none;
+    user-select: none;
+    position: absolute;
+    bottom: 0;
+    width: 60vw;
+    margin-left: 20vw;
+    height: 40vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    background-color: #2a2d37;
 }
 html, body {margin: 0; height: 100%; overflow: hidden}
 body {
@@ -131,6 +100,7 @@ button:focus {outline:0;}
     align-content: center;
     background-color: #2a2d37;
 }
+
 #panel-bc {
     position: absolute;
     bottom: 0;
@@ -156,4 +126,56 @@ span {
 }
 .inv {
     opacity: 0;
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+    * {
+        font-size: 25px;
+    }
+    #panel_mobile {
+        width: 100vw !important;
+        display: block !important;
+        text-align: center;
+        margin-bottom: 0vh !important;
+        padding-bottom: 4vh !important;
+        margin: 0 !important;
+    }
+    #panel {
+        display: none !important;
+    }
+    #calculator {
+        width: 100vw !important;
+        margin-left: 0 !important; 
+        height: 50% !important;
+        
+    }
+    #result {
+        font-size: 45px !important;
+        line-height: 50px !important;
+    }
+    #screen {
+        
+        font-size: 25px !important;
+    }
+    .cat {
+        width: 100%  !important;
+        height: auto !important;
+        margin-bottom: -3vh !important;
+    }
+    #panel-bc { 
+        height: 50vh !important;
+    }
+    button { 
+        font-size: .8rem !important;
+        width: 15vw !important;
+        height: 15vw !important;
+        margin: 0 !important;
+        margin-bottom: 0.7vh !important;
+    }
+    .x {
+        display: none !important;
+    }
+    .chrome {
+        margin-bottom: +4vh !important;
+    }
 }

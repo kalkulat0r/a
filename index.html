@@ -50,28 +50,69 @@
         <button onclick="add_to_screen('2')">2</button>
         <button onclick="add_to_screen('3')">3</button>
         <button class="op" onclick="add_to_screen('<span>-</span>')">-</button>
-        <button class="op x" onclick="add_to_screen('<span>/</span>')">/</button>
+        <button class="op" onclick="add_to_screen('<span>/</span>')">/</button>
+        <button class="inv"></button>
+    </div>
+    <div id="panel_mobile">
+        <button class="other" onclick="add_to_screen('<span>sin(</span>')">sin</button>
+        <button class="other" onclick="add_to_screen('<span>cos(</span>')">cos</button>
+        <button class="other" onclick="add_to_screen('<span>tan(</span>')">tan</button>
+        <button onclick="add_to_screen('<span>log(</span>')">log</button>
+        <button class="strong_buttons" onclick="clear_screen()">C</button>
+
+        <button onclick="add_to_screen('<span>^</span>')">^x</button>
+        <button onclick="add_to_screen('<span>^2</span>')">x^2</button>
+        <button class="op" onclick="add_to_screen('<span>(</span>')">(</button>
+        <button class="op" onclick="add_to_screen('<span>)</span>')">)</button>
+        <button class="strong_buttons"  onclick="backspace()">B</button>
+
+        <button onclick="add_to_screen('1')">1</button>
+        <button onclick="add_to_screen('2')">2</button>
+        <button onclick="add_to_screen('3')">3</button>
+        <button class="op" onclick="add_to_screen('<span>/</span>')">/</button>
+        <button class="op" onclick="add_to_screen('<span>-</span>')">-</button>
+
+        <button onclick="add_to_screen('4')">4</button>
+        <button onclick="add_to_screen('5')">5</button>
+        <button onclick="add_to_screen('6')">6</button>
+        <button class="op" onclick="add_to_screen('<span>*</span>')">*</button>
+        <button class="op" onclick="add_to_screen('<span>+</span>')">+</button>
+
+        <button onclick="add_to_screen('7')">7</button>
+        <button onclick="add_to_screen('8')">8</button>
+        <button onclick="add_to_screen('9')">9</button>
+        <button onclick="add_to_screen('0')">0</button>
+        <button onclick="add_to_screen('<span>√(</span>')">sqrt</button>
+
+        <button class="other x" onclick="add_to_screen('<span>%</span>')">%</button>
         <button class="inv"></button>
     </div>
     
 
     <script>
         let calculator = document.getElementById("screen")
-        
+        if(/Chrome|android/i.test(navigator.userAgent) && !navigator.userAgent.includes("FB")){
+            let cat = document.getElementById("cat")
+            cat.classList.add("chrome")
+        }
         function add_to_screen(a) {
             if ("0123456789".includes(a)) {
                 let cat = document.getElementById("cat")
                     cat.src = "cat2.png"
+                    cat.srcset = "cat2.png"
                     setTimeout(function() {
                         let cat = document.getElementById("cat")
                         cat.src = "cat1.png"
+                        cat.srcset = "cat1.png"
                     }, 100);
             } else if (a.includes("%") || a.includes("+") || a.includes("-") || a.includes("*") || a.includes("/") || a.includes("(") || a.includes(")")) { 
                 let cat = document.getElementById("cat")
                     cat.src = "cat3.png"
+                    cat.srcset = "cat3.png"
                     setTimeout(function() {
                         let cat = document.getElementById("cat")
                         cat.src = "cat1.png"
+                        cat.srcset = "cat1.png"
                     }, 100);
             }
             calculator.innerHTML += a
