@@ -92,8 +92,12 @@
     <script>
         let calculator = document.getElementById("screen")
         if(/AppleWebKit/i.test(navigator.userAgent) && !navigator.userAgent.includes("FB")){
-            let cat = document.getElementById("cat")
-            cat.classList.add("chrome")
+            if(/Chrome/i.test(navigator.userAgent) && !navigator.userAgent.includes("FB")){
+                let cat = document.getElementById("cat")
+                cat.classList.add("chrome")
+            } else {
+                cat.classList.add("safari")   
+            }
         }
         function add_to_screen(a) {
             if ("0123456789".includes(a)) {
