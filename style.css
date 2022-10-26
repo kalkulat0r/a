@@ -2,6 +2,7 @@
 
 * {
     font-family: 'Prompt', sans-serif;
+  touch-action: manipulation;
 }
 #panel_mobile {
     display: none;
