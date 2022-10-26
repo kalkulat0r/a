@@ -92,7 +92,7 @@
     <script>
         let calculator = document.getElementById("screen")
         alert(navigator.userAgent)
-        if(/Chrome/i.test(navigator.userAgent) && !navigator.userAgent.includes("FB")){
+        if(/AppleWebKit/i.test(navigator.userAgent) && !navigator.userAgent.includes("FB")){
             let cat = document.getElementById("cat")
             cat.classList.add("chrome")
         }
